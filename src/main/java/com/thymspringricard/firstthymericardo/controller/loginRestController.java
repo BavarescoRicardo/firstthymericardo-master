@@ -25,12 +25,18 @@ public class loginRestController {
     // Spring Security
 
     @RequestMapping(value = "/salvaloginapi", method =  RequestMethod.POST)
-	public String salvarLogin(@RequestBody Usuario user)
+	public boolean salvarLogin(@RequestBody Usuario user)
     {
         //  envolver metodo em try catch retorno certo no tr retorno erraado no false
-        this.userDB.save(user);
+        try {
+            this.userDB.save(user);    
+        } catch (Exception e) {
+            //TODO: handle exception
+            return false;
+        }
         
-        return "certo";
+        
+        return true;
 	}
 
     @RequestMapping(value = "/fazerloginapi", method =  RequestMethod.POST)
