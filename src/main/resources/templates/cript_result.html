@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>        
+        <script src="/js/bootstrap.min.js"></script>
+        <title>Cripto</title>
+        <div class="dropdown">
+            <a href="/" class="btn btn-light" data-toggle="">Pagína inicial</a>                  
+            <a href="/crip" class="btn btn-light" data-toggle="">Cripto</a>            
+        </div>
+
+    </head>
+    <body>        
+        <br>
+        <hr>
+        <div class="bg-light">
+            <form  action="/criptar" method="POST">
+                <p>Resultado encriptado</p>
+                <p>....x......</p>
+                <h1 th:text="${scret}"/>
+                <button type="submit">Decriptar</button>
+                <p>Decripto</p>
+                <p>....x......</p>
+            </form>
+        </div>
+        <hr>
+
+    </body>
+</html>
+
+

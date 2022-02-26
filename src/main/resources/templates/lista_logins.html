@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>        
+        <script src="/js/bootstrap.min.js"></script>
+        <div >
+            <a href="/" class="btn btn-light" data-toggle="">Pagína inicial</a>                  
+            <a href="/listlogins" class="btn btn-light" data-toggle="">Lista de logins</a>            
+            <a href="/crip" class="btn btn-light" data-toggle="">Cripto</a>            
+            <a href="/login" class="btn btn-light" data-toggle="">Login</a>            
+        </div>
+</head>
+<body>    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>                    
+                    Data: <span th:utext="${#temporals.format(data, 'dd/MM/yyyy')}"></span><br>
+                    Hoje é: <span th:utext="${dataExtenso}"></span><br>
+                    <span th:utext="${#strings.concat(nome, ' ', sobrenome)}"></span>
+                </p>
+    
+            </div>
+        </div>
+        <div class="row">            
+            <div class="col">
+                <div th:each="login : ${logins}">
+                    <hr>
+                    <h4 th:text="'login: ' + ${login.nomelogin} "></h4>
+                </div>
+            </div>
+        </div>
+        <br>
+        <hr>
+
+        <div class="d-flex align-items-center justify-content-left">
+            <form action="/salvalogin" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <p>Nome do usuario</p>
+                        <input type="text" name="nome_login"/>
+                    </div>
+                    <div class="col">
+                        <p>Senha</p>
+                        <input type="password" name="senha_login"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Permissões do usuario</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <select name="permit">
+                            <option value='1'>Administrador</option>
+                            <option value='2'>Comum</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <button type="submit">Cadastrar usuario</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+
+        <div class="row">
+            <a href="/" class="btn btn-light" data-toggle="">Voltar ao principal</a>
+        </div>
+
+
+
+
+
+
+    </div>    
+</body>
+</html>
